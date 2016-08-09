@@ -1,0 +1,29 @@
+{
+  "name": "tigr1991/profiler",
+  "description": "WrapperProfiler",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "license": "proprietary",
+  "version": "0.0.1",
+  "authors": [
+    {
+      "name": "Ivan Iakovenko",
+      "homepage": "http://cv.totome.ru/",
+      "email": "iakovenko-bmstu@yandex.ru",
+      "role": "Developer"
+    }
+  ],
+  "require-dev": {
+    "phpunit/phpunit": "4.8.*"
+  },
+  "repositories": [
+  ],
+  "autoload": {
+    "psr-4": {
+      "Profiler\\": "src/",
+      "ProfilerTests\\": "tests/"
+    }
+  },
+  "scripts": {
+  }
+}
