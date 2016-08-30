@@ -4,10 +4,9 @@ namespace Profiler;
 
 class Profiler
 {
-    const DEFAULT_NAME_SESSION = 'semantic';
-    const XHPROF_ROOT = '/var/php_only/xhprof-0.9.4/';
-    const TEMPLATE_OF_LINK_TO_IMG = 'http://xh.dev.mivar.ru/callgraph.php?run=run_id&source=name_of_session';
-    const TEMPLATE_OF_LINK_TO_DETAIL_PAGE = 'http://xh.dev.mivar.ru/index.php?run=run_id&source=name_of_session';
+
+
+
 
     protected $include_files = [
         'xhprof_lib/utils/xhprof_lib.php',
@@ -27,7 +26,7 @@ class Profiler
      */
     public static function getInstance()
     {
-        static::checkenvironment();
+        static::checkEnvironment();
 
         if (static::$instance === null) {
             static::$instance = new static();
@@ -41,7 +40,7 @@ class Profiler
 
     }
 
-    protected static function checkenvironment()
+    protected static function checkEnvironment()
     {
         if (!function_exists('xhprof_enable')) {
             throw new \Profiler\Exception("Попытка вызвать функцию xhprof_enable. Профайлер не установлен.");
@@ -57,7 +56,7 @@ class Profiler
     public function start($name_of_session = null)
     {
         if ($name_of_session === null) {
-            $name_of_session = static::DEFAULT_NAME_SESSION . "_" . microtime(true);
+            $name_of_session = \Profiler\Configuration::DEFAULT_NAME_SESSION. "_" . microtime(true);
         }
         assert(is_string($name_of_session));
         $this->name_of_session = $name_of_session;
@@ -78,7 +77,7 @@ class Profiler
     protected function includeFiles()
     {
         foreach ($this->include_files as $include_file) {
-            include_once static::XHPROF_ROOT . $include_file;
+            include_once \Profiler\Configuration::XHPROF_ROOT . $include_file;
         }
     }
 

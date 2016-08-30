@@ -16,7 +16,14 @@
   "require-dev": {
     "phpunit/phpunit": "4.8.*"
   },
+  "require": {
+    "tigr1991/config-of-project": "dev-develop"
+  },
   "repositories": [
+    {
+      "url": "https://github.com/tigr1991/config-of-project.git",
+      "type": "git"
+    }
   ],
   "autoload": {
     "psr-4": {
